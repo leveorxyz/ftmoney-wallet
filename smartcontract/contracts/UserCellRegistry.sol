@@ -13,4 +13,17 @@ contract UserCellRegistry is Ownable {
     mapping(bytes32 => Record) _records;
     mapping(uint256 => string) _saltHint;
 
+    function registerUser(
+        string calldata salt,
+        string calldata saltHint,
+        uint256 userCell,
+        address userAddress
+    ) public onlyOwner {
+        Record storage record = _records[
+            keccak256(abi.encodePacked(salt, userCell))
+        ];
+        record.userAddress = userAddress;
+        record.initialized = true;
+        _saltHint[userCell] = saltHint;
+    }
 }
