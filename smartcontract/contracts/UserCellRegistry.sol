@@ -12,7 +12,10 @@ contract UserCellRegistry is Ownable {
 
     mapping(bytes32 => Record) _records;
     mapping(uint256 => string) _saltHint;
-
+    
+    function getSaltHint(uint256 userCell) public view returns (string memory) {
+        return _saltHint[userCell];
+    }
 
     function getUserAddress(
         string calldata salt,
