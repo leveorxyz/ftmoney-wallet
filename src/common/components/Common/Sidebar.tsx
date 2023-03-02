@@ -75,10 +75,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         bg="primary.700" height="100%" width="100%" blur="3xl" opacity={0.4} zIndex={-1}
         pointerEvents="none" userSelect="none" />
       <Flex h="20" alignItems="center" mx="8" gap={2}>
-        <Image src="./src/assets/images/meteor.png" width="32px" />
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" textAlign="center" pt={2}>
-          Meteor
-        </Text>
+        <Image src="./src/assets/images/logo.png" height="150px" width="250px" />
+        
+        {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" textAlign="center" pt={2}>
+          FinWallet
+        </Text> */}
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {SidebarLinkItems.map((link) => (
