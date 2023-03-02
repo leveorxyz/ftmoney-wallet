@@ -1,5 +1,5 @@
 import { defineConfig, splitVendorChunkPlugin  } from 'vite'
-import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+// import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import react from '@vitejs/plugin-react'
 import inject from '@rollup/plugin-inject';
 import nodePolyfills from "rollup-plugin-polyfill-node";
@@ -71,12 +71,12 @@ export default defineConfig({
       define: {
         'global': "globalThis"
       },
-      plugins: [
-        NodeGlobalsPolyfillPlugin({
-          process: true,
-          buffer: true,
-        }),
-      ]
+      // plugins: [
+      //   NodeGlobalsPolyfillPlugin({
+      //     process: true,
+      //     buffer: true,
+      //   }),
+      // ]
     }
   },
 })
