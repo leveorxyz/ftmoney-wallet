@@ -1,11 +1,14 @@
-require('dotenv').config();
-require('@nomiclabs/hardhat-waffle');
-require("@nomiclabs/hardhat-etherscan");
+import * as dotenv from "dotenv";
+
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+
+dotenv.config();
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const API_KEY = process.env.API_KEY;
 
-module.exports = {
+const config: HardhatUserConfig = {
   solidity: '0.8.17',
   settings: {
     optimizer: {
@@ -38,3 +41,5 @@ module.exports = {
     }
   }
 };
+
+export default config;
