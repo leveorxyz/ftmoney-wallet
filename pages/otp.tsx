@@ -3,9 +3,9 @@ import React from "react";
 
 const OTPPage: NextPage = () => {
 
-    const digitValidate = function(ele: any){
-        console.log(ele.target.value)
-        ele.target.value = ele.target.value.replace(/[^0-9]/g,'');
+    const digitValidate = function(elm: any){
+        console.log(elm.target.value)
+        elm.target.value = elm.target.value.replace(/[^0-9]/g,'');
     }
       
     const tabChange = function(val: number){
@@ -34,16 +34,16 @@ const OTPPage: NextPage = () => {
           <div className="flex flex-col space-y-16">
             <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
               <div className="w-16 h-16 ">
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(1)}/>
+              </div>
+              <div className="w-16 h-16 ">
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(2)}/>
+              </div>
+              <div className="w-16 h-16 ">
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(3)}/>
+              </div>
+              <div className="w-16 h-16 ">
                 <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)}/>
-              </div>
-              <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1}/>
-              </div>
-              <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1}/>
-              </div>
-              <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1}/>
               </div>
             </div>
 
