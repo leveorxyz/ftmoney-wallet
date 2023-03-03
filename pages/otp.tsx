@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import React from "react";
 
-const HomePage: NextPage = () => {
+const OTPPage: NextPage = () => {
   return (
     <></>
   );
 };
 
-export default HomePage;
+export default OTPPage;

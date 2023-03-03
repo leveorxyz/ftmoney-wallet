@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </div>
         <Link
-            href="/home"
+            href="/phone"
             className={styles.card}
           >
             <h2 className={inter.className}>
