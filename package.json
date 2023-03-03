@@ -44,6 +44,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.5",
+    "styled-components": "^5.3.8",
     "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store",
     "typescript": "^4.7.4",
     "zustand": "^4.2.0"

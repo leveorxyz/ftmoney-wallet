@@ -37,9 +37,9 @@ const WelcomePage: React.FC = () => {
 
       </Box>
       <Box m={5} textAlign="center">
-      <Link href='/start'>
+      <Link href='/wallet'>
       <Button>
-          Get Started
+          Create Wallet
         </Button>
        
       </Link>

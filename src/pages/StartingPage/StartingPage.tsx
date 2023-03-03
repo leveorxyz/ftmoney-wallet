@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Stack, Button, Flex, Image, Text, Link } from '@chakra-ui/react'
+import { Stack, Button, Flex, Image, Text, Link, Input } from '@chakra-ui/react'
 
 
 interface Props {}
@@ -15,6 +15,7 @@ const StartingPage: React.FC<Props> = () => {
         Securely manage your digital assets on-the-go with our trusted wallet app. Download now and take control of your financial future!
         </Text>
         <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+        <Input type="text" />
           <Link href="/welcome">
           <Button
             rounded={'full'}
@@ -26,7 +27,6 @@ const StartingPage: React.FC<Props> = () => {
             Get Started
           </Button>
           </Link>
-      
         </Stack>
       </Stack>
     </Flex>

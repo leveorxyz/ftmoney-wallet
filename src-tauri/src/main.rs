@@ -8,7 +8,7 @@ use tauri::{Manager}; // used by .get_window
 use tauri::{self, SystemTrayEvent, SystemTrayMenuItem};
 use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu};
 use tauri_plugin_store::PluginBuilder;
-use tauri_plugin_window_state;
+// use tauri_plugin_window_state;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 #[derive(Clone, serde::Serialize)]

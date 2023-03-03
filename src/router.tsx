@@ -4,6 +4,7 @@ import ZustandPage from '@/pages/ZustandPage';
 import SidebarLayout from '@/common/components/Common/Layouts/SidebarLayout';
 import WelcomePage from '@/pages/WelcomePage/WelcomePage';
 import TauriPage from '@/pages/TauriPage/TauriPage';
+import WalletPage from '@/pages/WalletPage/WalletPage';
 import StartingPage from '@/pages/StartingPage/StartingPage';
 
 export const router = createBrowserRouter(
@@ -12,6 +13,7 @@ export const router = createBrowserRouter(
     <Route index element={<StartingPage />}></Route>
     <Route path="/" element={<SidebarLayout />}>
       <Route path='/welcome' element={<WelcomePage />} />
+      <Route path='/wallet' element={<WalletPage />} />
       <Route path="/tauri" element={<TauriPage />} />
       <Route path="/zustand" element={<ZustandPage />} />
     </Route>
