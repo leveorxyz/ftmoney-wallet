@@ -1,24 +1,27 @@
 {
-  "package": {
-    "productName": "Tauri Boilerplate",
-    "version": "1.0.0"
-  },
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "distDir": "../build",
-    "devPath": "http://127.0.0.1:4590",
-    "beforeDevCommand": "yarn cross-env BROWSER=none yarn start",
-    "beforeBuildCommand": "yarn build",
-    "withGlobalTauri": true
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run dev",
+    "devPath": "http://localhost:3000",
+    "distDir": "../out"
+  },
+  "package": {
+    "productName": "tauriboilerplate",
+    "version": "0.1.0"
   },
   "tauri": {
-    "systemTray": {
-      "iconPath": "icons/icon.ico",
-      "iconAsTemplate": true
+    "allowlist": {
+      "all": false
     },
     "bundle": {
       "active": true,
-      "targets": "all",
-      "identifier": "com.tauri.boilerplate.dev",
+      "category": "DeveloperTool",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": [],
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -26,50 +29,38 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "resources": [],
-      "externalBin": [],
-      "copyright": "",
-      "category": "Game",
-      "shortDescription": "",
+      "identifier": "com.tauri.dev",
       "longDescription": "",
-      "deb": {
-        "depends": []
-      },
       "macOS": {
-        "frameworks": [],
-        "minimumSystemVersion": "",
+        "entitlements": null,
         "exceptionDomain": "",
-        "signingIdentity": null,
-        "entitlements": null
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
       },
+      "resources": [],
+      "shortDescription": "",
+      "targets": "all",
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
         "timestampUrl": ""
       }
     },
+    "security": {
+      "csp": null
+    },
     "updater": {
       "active": false
     },
-    "allowlist": {
-      "all": true
-    },
     "windows": [
       {
-        "title": "FinWallet",
-        "label": "main",
-        "minWidth": 1280,
-        "minHeight": 720,
-        "resizable": true,
         "fullscreen": false,
-        "visible": true,
-        "decorations": true,
-        "alwaysOnTop": false,
-        "transparent": false
+        "height": 600,
+        "resizable": true,
+        "title": "Tauri Boilerplate",
+        "width": 800
       }
-    ],
-    "security": {
-      "csp": null
-    }
+    ]
   }
 }
