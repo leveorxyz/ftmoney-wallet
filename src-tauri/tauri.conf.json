@@ -56,7 +56,7 @@
     },
     "windows": [
       {
-        "title": "Tauri Starter Boilerplate",
+        "title": "FinWallet",
         "label": "main",
         "minWidth": 1280,
         "minHeight": 720,

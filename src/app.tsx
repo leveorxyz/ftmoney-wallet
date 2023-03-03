@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import { StartingPage } from './pages/StartingPage';
+import Main from './pages/Main';
 
 import '@/config/theme/globals.css';
 import { router } from "@/router";
@@ -16,6 +18,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <ChakraProvider resetCSS theme={FXDTheme}>
+    {/* <StartingPage></StartingPage> */}
+    {/* <Route path='/main' element={<Main/>}></Route> */}
+
     <RouterProvider router={router} />
   </ChakraProvider>
 );
