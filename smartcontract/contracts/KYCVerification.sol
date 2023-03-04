@@ -4,7 +4,6 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract KYCVerification is Ownable {
-
     struct Signature {
         uint8 v;
         bytes32 r;
@@ -12,6 +11,22 @@ contract KYCVerification is Ownable {
         bytes dataframe;
     }
 
+    function isKYCApproved(
+        Signature calldata _signature
+    ) internal view returns (bool) {
+        address whitelistedAddress = sliceAddress(_signature.dataframe, 0);
+        bytes32 hash = keccak256(_signature.dataframe);
+        address recoverdSigner = ecrecover(
+            hash,
+            _signature.v,
+            _signature.r,
+            _signature.s
+        );
+
+        require(whitelistedAddress == msg.sender);
+        require(recoverdSigner == owner());
+        return true;
+    }
 
     function sliceAddress(
         bytes calldata b,
