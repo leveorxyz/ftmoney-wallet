@@ -2,8 +2,9 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./KYCVerification.sol";
 
-contract UserCellRegistry is Ownable {
+contract UserCellRegistry is KYCVerification {
     struct Record {
         address userAddress;
         bool initialized;
@@ -12,7 +13,7 @@ contract UserCellRegistry is Ownable {
 
     mapping(bytes32 => Record) _records;
     mapping(uint256 => string) _saltHint;
-    
+
     function getSaltHint(uint256 userCell) public view returns (string memory) {
         return _saltHint[userCell];
     }
@@ -34,8 +35,9 @@ contract UserCellRegistry is Ownable {
         string calldata salt,
         string calldata saltHint,
         uint256 userCell,
-        address userAddress
-    ) public onlyOwner {
+        address userAddress,
+        Signature calldata signature
+    ) public onlyWhitelisted(signature) onlyOwner {
         Record storage record = _records[
             keccak256(abi.encodePacked(salt, userCell))
         ];
