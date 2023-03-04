@@ -1,9 +1,14 @@
 import { NextPage } from "next";
 import React from "react";
-import Link from "next/link";
-
+import {useRouter}  from 'next/router';
 
 const PhonePage: NextPage = () => {
+  const router = useRouter()
+
+  const sendNumber = () => {
+    console.log("Sending...")
+    router.push('/otp');
+  }
   return (
     <div className="flex h-screen w-full items-center justify-center bg-gray-900 bg-cover bg-no-repeat" style={{backgroundImage:"url('https://images.unsplash.com/photo-1598798710023-8682deb58a8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80')"}}>
     <div className="rounded-xl bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
@@ -19,9 +24,8 @@ const PhonePage: NextPage = () => {
           </div>
 
           <div className="mt-8 flex justify-center text-lg text-black">
-            <Link href='/otp'>
-            <button type="submit" className="rounded-3xl bg-blue-400 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-blue-600">Enter </button>
-            </Link>
+        
+            <button className="rounded-3xl bg-blue-400 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-blue-600" onClick={() => sendNumber()}>Enter </button>
           </div>
         </form>
       </div>
