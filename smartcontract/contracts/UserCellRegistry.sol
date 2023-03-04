@@ -16,12 +16,12 @@ contract UserCellRegistry is Ownable {
     struct Signature {
         uint8 v;
         bytes32 r;
-        bytes32 s;   
+        bytes32 s;
         address userAddress;
     }
-        
+
     modifier isApproved(Signature calldata signature) {
-        require(checkApproval(signature)); 
+        require(checkApproval(signature));
         _;
     }
 
@@ -29,11 +29,10 @@ contract UserCellRegistry is Ownable {
         return _saltHint[userCell];
     }
 
-    function getUserAddress(string calldata salt, uint256 userCell)
-        public
-        view
-        returns (bool isRegistered, address key)
-    {
+    function getUserAddress(
+        string calldata salt,
+        uint256 userCell
+    ) public view returns (bool isRegistered, address key) {
         Record memory record = _records[
             keccak256(abi.encodePacked(salt, userCell))
         ];
@@ -58,5 +57,18 @@ contract UserCellRegistry is Ownable {
         _saltHint[userCell] = saltHint;
     }
 
-}
+    function checkApproval(
+        Signature calldata _signature
+    ) internal view returns (bool) {
+        bytes32 hash = keccak256(abi.encodePacked(_signature.userAddress));
+        address recoverdSigner = ecrecover(
+            hash,
+            _signature.v,
+            _signature.r,
+            _signature.s
+        );
 
+        require(recoverdSigner == owner());
+        return true;
+    }
+}
