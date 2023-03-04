@@ -9,5 +9,13 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  const { phone } = req.body;
+  console.log(phone);
+  const accountSid = <string>process.env.TWILIO_ACCOUNT_SID;
+  const token = <string>process.env.TWILIO_AUTH_TOKEN;
+  console.log(token);
+  console.log(accountSid);
+  
+  
   res.status(200).json({ name: 'John Doe' })
 }
