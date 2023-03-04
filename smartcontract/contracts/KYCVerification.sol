@@ -11,6 +11,11 @@ contract KYCVerification is Ownable {
         bytes dataframe;
     }
 
+    modifier onlyWhitelisted(Signature calldata signature) {
+        require(isKYCApproved(signature));
+        _;
+    }
+
     function isKYCApproved(
         Signature calldata _signature
     ) internal view returns (bool) {
