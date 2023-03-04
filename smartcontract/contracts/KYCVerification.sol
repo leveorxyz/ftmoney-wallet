@@ -12,4 +12,15 @@ contract KYCVerification is Ownable {
         bytes dataframe;
     }
 
+
+    function sliceAddress(
+        bytes calldata b,
+        uint offset
+    ) private pure returns (address) {
+        bytes32 out;
+        for (uint i = 0; i < 20; i++) {
+            out |= bytes32(b[offset + i] & 0xFF) >> ((i + 12) * 8);
+        }
+        return address(uint160(uint(out)));
+    }
 }
