@@ -1,9 +1,15 @@
 import { NextPage } from "next";
 import router from "next/router";
-import React from "react";
+import React, {useState} from "react";
 
 const OTPPage: NextPage = () => {
     const phone = localStorage.getItem("number")
+    const [code1, setCode1] = useState('');
+    const [code2, setCode2] = useState('');
+    const [code3, setCode3] = useState('');
+    const [code4, setCode4] = useState('');
+
+
     const digitValidate = function(elm: any){
         console.log(elm.target.value)
         elm.target.value = elm.target.value.replace(/[^0-9]/g,'');
@@ -11,6 +17,7 @@ const OTPPage: NextPage = () => {
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        const code = code1.toString() + code2.toString() + code3.toString() + code4.toString()
         router.push("/home");
       };
       
@@ -46,16 +53,31 @@ const OTPPage: NextPage = () => {
           <div className="flex flex-col space-y-16">
             <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
               <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(1)}/>
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900"
+                value={code1}
+                onChange={e => { setCode1(e.currentTarget.value); }} 
+                type="text" name="" id="" maxLength={1} 
+                onInput={(e) => digitValidate(e)} 
+                onKeyUp={(e) => tabChange(1)}
+                />
               </div>
               <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(2)}/>
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900"
+                value={code2}
+                onChange={e => { setCode2(e.currentTarget.value); }} 
+                type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(2)}/>
               </div>
               <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(3)}/>
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900"
+                value={code3}
+                onChange={e => { setCode3(e.currentTarget.value); }} 
+                type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)} onKeyUp={(e) => tabChange(3)}/>
               </div>
               <div className="w-16 h-16 ">
-                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900" type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)}/>
+                <input className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 text-blue-900"
+                value={code4}
+                onChange={e => { setCode4(e.currentTarget.value); }} 
+                type="text" name="" id="" maxLength={1} onInput={(e) => digitValidate(e)}/>
               </div>
             </div>
 
