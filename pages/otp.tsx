@@ -3,12 +3,14 @@ import router from "next/router";
 import React, {useState} from "react";
 
 const OTPPage: NextPage = () => {
-    const phone = localStorage.getItem("number")
+    const phone = localStorage.getItem("number") as string
+    const obscuredPhone = "***" + phone.slice(4,8) + "*****"
     const [code1, setCode1] = useState('');
     const [code2, setCode2] = useState('');
     const [code3, setCode3] = useState('');
     const [code4, setCode4] = useState('');
 
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
     const digitValidate = function(elm: any){
         console.log(elm.target.value)
@@ -17,8 +19,20 @@ const OTPPage: NextPage = () => {
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        
         const code = code1.toString() + code2.toString() + code3.toString() + code4.toString()
-        router.push("/home");
+        const rawResponse = await fetch(baseURL + "verifyOTP", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ phone: phone, otpCode: code }),
+          });
+          const content = await rawResponse.json();
+          console.log(content);
+          if(content.success){
+              router.push("/home");
+          }
       };
       
     const tabChange = function(val: number){
@@ -44,7 +58,7 @@ const OTPPage: NextPage = () => {
           <p>Phone number Verification</p>
         </div>
         <div className="flex flex-row text-sm font-medium text-gray-400">
-          <p>We have sent a code to your phone number {phone}</p>
+          <p>We have sent a code to your phone number {obscuredPhone}</p>
         </div>
       </div>
 

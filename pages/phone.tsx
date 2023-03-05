@@ -10,8 +10,7 @@ const PhonePage: NextPage = () => {
 
   const sendNumber = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    console.log(baseURL + "sendOTP");
-    console.log(phone);
+    
     const rawResponse = await fetch(baseURL + "sendOTP", {
       method: "POST",
       headers: {
