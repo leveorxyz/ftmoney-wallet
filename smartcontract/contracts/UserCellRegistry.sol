@@ -11,7 +11,7 @@ contract UserCellRegistry is Ownable {
     }
 
     mapping(bytes32 => Record) _records;
-    mapping(uint256 => string) _saltHint;
+    mapping(string => string) _saltHint;
 
     struct Signature {
         uint8 v;
@@ -25,7 +25,9 @@ contract UserCellRegistry is Ownable {
         _;
     }
 
-    function getSaltHint(uint256 userCell) public view returns (string memory) {
+    function getSaltHint(
+        string calldata userCell
+    ) public view returns (string memory) {
         return _saltHint[userCell];
     }
 
@@ -45,7 +47,7 @@ contract UserCellRegistry is Ownable {
     function registerUser(
         string calldata salt,
         string calldata saltHint,
-        uint256 userCell,
+        string calldata userCell,
         address userAddress,
         Signature calldata signature
     ) public isApproved(signature) onlyOwner {
@@ -67,7 +69,6 @@ contract UserCellRegistry is Ownable {
             _signature.r,
             _signature.s
         );
-
         require(recoverdSigner == owner());
         return true;
     }
