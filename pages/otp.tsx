@@ -1,12 +1,18 @@
 import { NextPage } from "next";
+import router from "next/router";
 import React from "react";
 
 const OTPPage: NextPage = () => {
-
+    const phone = localStorage.getItem("number")
     const digitValidate = function(elm: any){
         console.log(elm.target.value)
         elm.target.value = elm.target.value.replace(/[^0-9]/g,'');
     }
+
+    const handleSubmit = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        router.push("/home");
+      };
       
     const tabChange = function(val: number){
         let ele = document.querySelectorAll('input');
@@ -17,20 +23,26 @@ const OTPPage: NextPage = () => {
         }   
     }
   return (
-    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+    <div
+     className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12"
+     style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1598798710023-8682deb58a8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80')",
+      }}
+     >
   <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
     <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
       <div className="flex flex-col items-center justify-center text-center space-y-2">
         <div className="font-semibold text-3xl">
-          <p>Email Verification</p>
+          <p>Phone number Verification</p>
         </div>
         <div className="flex flex-row text-sm font-medium text-gray-400">
-          <p>We have sent a code to your email ba**@dipainhouse.com</p>
+          <p>We have sent a code to your phone number {phone}</p>
         </div>
       </div>
 
       <div>
-        <form action="" method="post">
+        <form action="" onSubmit={handleSubmit}>
           <div className="flex flex-col space-y-16">
             <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
               <div className="w-16 h-16 ">
@@ -49,7 +61,7 @@ const OTPPage: NextPage = () => {
 
             <div className="flex flex-col space-y-5">
               <div>
-                <button className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
+                <button type="submit" className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
                   Verify Account
                 </button>
               </div>

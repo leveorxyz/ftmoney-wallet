@@ -22,6 +22,7 @@ const PhonePage: NextPage = () => {
     const content = await rawResponse.json();
     console.log(content);
     if(content.success){
+        localStorage.setItem("number", phone);
         router.push("/otp");
     }
   };
