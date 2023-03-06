@@ -31,7 +31,7 @@ const OTPPage: NextPage = () => {
           const content = await rawResponse.json();
           console.log(content);
           if(content.success){
-              router.push("/home");
+              router.push("/start");
           }
       };
       
