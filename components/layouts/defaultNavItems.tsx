@@ -9,23 +9,23 @@ import { NavItem } from "./Sidebar";
 
 export const defaultNavItems: NavItem[] = [
   {
-    label: "Dashboard",
-    href: "/",
+    label: "Home",
+    href: "/home",
     icon: <HomeIcon className="w-6 h-6" />,
   },
   {
-    label: "Team",
-    href: "/team",
+    label: "Wallet",
+    href: "/wallet",
     icon: <UserGroupIcon className="w-6 h-6" />,
   },
   {
-    label: "Projects",
-    href: "/projects",
+    label: "Transaction",
+    href: "/transaction",
     icon: <FolderIcon className="w-6 h-6" />,
   },
   {
-    label: "Calendar",
-    href: "/calendar",
+    label: "Price",
+    href: "/price",
     icon: <CalendarIcon className="w-6 h-6" />,
   },
 ];
