@@ -1,63 +1,36 @@
 {
-  "name": "tauri-boilerplate",
-  "version": "1.0.0",
+  "name": "tauriboilerplate",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "tauri dev",
-    "start": "vite",
-    "rls": "tauri build",
-    "rls:debug": "tauri build --debug",
-    "rls:mac": "tauri build --target universal-apple-darwin",
-    "build": "cross-env INLINE_RUNTIME_CHUNK=true NODE_OPTIONS=--max-old-space-size=16192 yarn vite build",
-    "preview": "vite preview",
-    "serve": "serve -s build",
-    "preinstall": "yarn global add serve"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "tauri": "tauri",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.9",
-    "@chakra-ui/react": "^2.2.6",
-    "@emotion/react": "11",
-    "@emotion/styled": "11",
-    "@fontsource/montserrat": "^4.5.13",
-    "@tauri-apps/api": "^1.2.0",
-    "framer-motion": "6",
-    "localforage": "^1.10.0",
-    "mutative": "^0.2.2",
+    "@heroicons/react": "^2.0.16",
+    "@types/node": "18.14.5",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "classnames": "^2.3.2",
+    "crypto-js": "^4.1.1",
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.3",
+    "ethers": "^6.0.8",
+    "next": "13.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.4.5",
-    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store",
-    "typescript": "^4.7.4",
-    "zustand": "^4.2.0"
+    "twilio": "^4.8.0",
+    "typescript": "4.9.5",
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
-    "@rollup/plugin-inject": "^4.0.4",
-    "@tauri-apps/cli": "^1.2.2",
-    "@types/node": "^18.7.15",
-    "@types/react-dom": "^18.0.9",
-    "@vitejs/plugin-react": "^3.0.0",
-    "buffer": "^6.0.3",
-    "cross-env": "^7.0.3",
-    "rollup-plugin-polyfill-node": "^0.10.2",
-    "rollup-plugin-visualizer": "^5.6.0",
-    "vite": "^4.0.0"
+    "@tauri-apps/cli": "^1.2.3",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   }
 }
