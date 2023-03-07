@@ -1,6 +1,10 @@
 import { NextPage } from "next";
 import React from "react";
 import { createPrivateKeyPair } from '../utils';
+import {
+  ArrowRightCircleIcon
+} from "@heroicons/react/24/outline";
+import Link from 'next/link';
 
 const StartPage: NextPage = () => {
 
@@ -62,6 +66,16 @@ const StartPage: NextPage = () => {
         
         </figure>
       </div>
+      <div className="flex items-center justify-center mt-5">
+      <Link href='/password'>
+    <button className="group rounded-2xl h-12 w-48 bg-green-500 font-bold text-lg text-white relative overflow-hidden">
+      
+     <span>Proceed </span> <ArrowRightCircleIcon className="h-6 w-6 inline"/> 
+        <div className="absolute duration-300 inset-0 w-full h-full transition-all scale-0 group-hover:scale-100 group-hover:bg-white/30 rounded-2xl">
+        </div>
+    </button>
+    </Link>
+</div>
     </div>
    
   );
