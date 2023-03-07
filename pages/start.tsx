@@ -1,12 +1,11 @@
 import { NextPage } from "next";
 import React from "react";
-import {
-  LockOpenIcon
-} from "@heroicons/react/24/outline";
+import { createPrivateKeyPair } from '../utils';
 
 const StartPage: NextPage = () => {
 
-  
+  const keyPair = createPrivateKeyPair();
+  console.log(keyPair)
   return (
     <div className="isolate overflow-hidden bg-white py-24 px-6 sm:py-32 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
@@ -25,7 +24,7 @@ const StartPage: NextPage = () => {
                   </div>
                   <div className="text-center">
                     <p className="text-lg font-semibold text-gray-300 dark:text-gray-200">
-                    0x2cd02ad9B1304fcc50FEbE6A41e663B9Ef69666a
+                    {keyPair.address}
                     </p>
                   </div>
                 
@@ -48,7 +47,7 @@ const StartPage: NextPage = () => {
                 
                 </div>
       
-      <span className="inline-flex items-center rounded-full p-2 bg-red-300 text-white group transition-all duration-500 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none" role="alert" tabIndex="0">
+      <span className="inline-flex items-center rounded-full p-2 bg-red-300 text-white group transition-all duration-500 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none" role="alert">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
 </svg>
