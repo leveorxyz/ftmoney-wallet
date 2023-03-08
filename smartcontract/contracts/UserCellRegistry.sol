@@ -11,9 +11,9 @@ contract UserCellRegistry is Ownable {
     }
 
     mapping(bytes32 => Record) _records;
-    mapping(uint256 => string) _saltHint;
+    mapping(string => string) _saltHint;
     
-    function getSaltHint(uint256 userCell) public view returns (string memory) {
+    function getSaltHint(string memory userCell) public view returns (string memory) {
         return _saltHint[userCell];
     }
 
@@ -33,7 +33,7 @@ contract UserCellRegistry is Ownable {
     function registerUser(
         string calldata salt,
         string calldata saltHint,
-        uint256 userCell,
+        string memory userCell,
         address userAddress
     ) public onlyOwner {
         Record storage record = _records[

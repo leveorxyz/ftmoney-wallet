@@ -111,7 +111,7 @@ const StartPage: NextPage = () => {
                       htmlFor="first-name"
                       className="block text-sm font-semibold leading-6 text-gray-900"
                     >
-                      Recovery Question (a question that your acquittance would
+                      Recovery Question (a question that your acquittances would
                       know about)
                     </label>
                     <div className="mt-2.5">
@@ -161,7 +161,7 @@ const StartPage: NextPage = () => {
               </form>
             )}
 
-            {!saltset && (
+            {saltset && (
               <div className="text-center">
                 <div className="flex items-center p-4 m-2 bg-white rounded-lg shadow-xs dark:bg-gray-500">
                   <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
@@ -192,7 +192,7 @@ const StartPage: NextPage = () => {
       </div>
 
       <div className="flex items-center justify-center mt-5">
-        {!saltset && (
+        {saltset && (
           <Link href="/password">
             <button className="group rounded-2xl h-12 w-48 bg-green-500 font-bold text-lg text-white relative overflow-hidden">
               <span>Proceed </span>{" "}

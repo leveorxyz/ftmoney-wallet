@@ -1,130 +1,132 @@
-[
-    {
-      "anonymous": false,
-      "inputs": [
+{
+    "abi": [
         {
-          "indexed": true,
-          "internalType": "address",
-          "name": "previousOwner",
-          "type": "address"
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
         },
         {
-          "indexed": true,
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "userCell",
-          "type": "uint256"
-        }
-      ],
-      "name": "getSaltHint",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "salt",
-          "type": "string"
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "userCell",
+              "type": "string"
+            }
+          ],
+          "name": "getSaltHint",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
-          "internalType": "uint256",
-          "name": "userCell",
-          "type": "uint256"
-        }
-      ],
-      "name": "getUserAddress",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "isRegistered",
-          "type": "bool"
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "salt",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "userCell",
+              "type": "uint256"
+            }
+          ],
+          "name": "getUserAddress",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "isRegistered",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "key",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
-          "internalType": "address",
-          "name": "key",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "salt",
-          "type": "string"
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
-          "internalType": "string",
-          "name": "saltHint",
-          "type": "string"
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "salt",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "saltHint",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "userCell",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            }
+          ],
+          "name": "registerUser",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-          "internalType": "uint256",
-          "name": "userCell",
-          "type": "uint256"
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-          "internalType": "address",
-          "name": "userAddress",
-          "type": "address"
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         }
-      ],
-      "name": "registerUser",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
+      ]
+}

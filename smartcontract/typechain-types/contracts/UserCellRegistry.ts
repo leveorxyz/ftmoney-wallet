@@ -29,10 +29,10 @@ import type {
 
 export interface UserCellRegistryInterface extends utils.Interface {
   functions: {
-    "getSaltHint(uint256)": FunctionFragment;
+    "getSaltHint(string)": FunctionFragment;
     "getUserAddress(string,uint256)": FunctionFragment;
     "owner()": FunctionFragment;
-    "registerUser(string,string,uint256,address)": FunctionFragment;
+    "registerUser(string,string,string,address)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
@@ -49,7 +49,7 @@ export interface UserCellRegistryInterface extends utils.Interface {
 
   encodeFunctionData(
     functionFragment: "getSaltHint",
-    values: [PromiseOrValue<BigNumberish>]
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "getUserAddress",
@@ -61,7 +61,7 @@ export interface UserCellRegistryInterface extends utils.Interface {
     values: [
       PromiseOrValue<string>,
       PromiseOrValue<string>,
-      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<string>,
       PromiseOrValue<string>
     ]
   ): string;
@@ -143,7 +143,7 @@ export interface UserCellRegistry extends BaseContract {
 
   functions: {
     getSaltHint(
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
@@ -158,7 +158,7 @@ export interface UserCellRegistry extends BaseContract {
     registerUser(
       salt: PromiseOrValue<string>,
       saltHint: PromiseOrValue<string>,
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       userAddress: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -174,7 +174,7 @@ export interface UserCellRegistry extends BaseContract {
   };
 
   getSaltHint(
-    userCell: PromiseOrValue<BigNumberish>,
+    userCell: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<string>;
 
@@ -189,7 +189,7 @@ export interface UserCellRegistry extends BaseContract {
   registerUser(
     salt: PromiseOrValue<string>,
     saltHint: PromiseOrValue<string>,
-    userCell: PromiseOrValue<BigNumberish>,
+    userCell: PromiseOrValue<string>,
     userAddress: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -205,7 +205,7 @@ export interface UserCellRegistry extends BaseContract {
 
   callStatic: {
     getSaltHint(
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -220,7 +220,7 @@ export interface UserCellRegistry extends BaseContract {
     registerUser(
       salt: PromiseOrValue<string>,
       saltHint: PromiseOrValue<string>,
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       userAddress: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -246,7 +246,7 @@ export interface UserCellRegistry extends BaseContract {
 
   estimateGas: {
     getSaltHint(
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -261,7 +261,7 @@ export interface UserCellRegistry extends BaseContract {
     registerUser(
       salt: PromiseOrValue<string>,
       saltHint: PromiseOrValue<string>,
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       userAddress: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -278,7 +278,7 @@ export interface UserCellRegistry extends BaseContract {
 
   populateTransaction: {
     getSaltHint(
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -293,7 +293,7 @@ export interface UserCellRegistry extends BaseContract {
     registerUser(
       salt: PromiseOrValue<string>,
       saltHint: PromiseOrValue<string>,
-      userCell: PromiseOrValue<BigNumberish>,
+      userCell: PromiseOrValue<string>,
       userAddress: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;

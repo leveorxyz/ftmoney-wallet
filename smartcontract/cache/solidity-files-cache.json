@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/tahliltahlil/Desktop/Leveor/FTMoney/fantomhackathon-wallet/smartcontract/contracts/UserCellRegistry.sol": {
-      "lastModificationDate": 1678249494754,
-      "contentHash": "c1970dd25f9ce7d613ae90c1664ba662",
+      "lastModificationDate": 1678271569263,
+      "contentHash": "644c85249299c3bba01cb3bc0920b67d",
       "sourceName": "contracts/UserCellRegistry.sol",
       "solcConfig": {
         "version": "0.8.17",
