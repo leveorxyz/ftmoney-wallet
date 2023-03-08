@@ -63,7 +63,9 @@ We wanted to support all kinds of devices with the same codebase, so we used the
 At the design level, we ran into challenges regarding privacy-convenience tradeoff and security-convenience tradeoff when it comes to linking phone numbers and on-chain KYC. For example, directly storing a phone number on-chain would expose someone's number to everyone (which is a privacy breach) but storing it in an obscured way would create inconvenience for other people to connect to the person associated with that cell phone number. On the implementation side, a few small issues arose for the main application development because there are still some dev issues for our chosen frameworks that required some workaround. 
 
 ## Accomplishments that we're proud of
-- 
+- Building a streamlined UX & Design of simplified Wallet
+- Integrating OTP Services against mobile number & user onboarding
+- Integrate and enabling gas assets for users on Fantom blockchain
 
 ## What's next for FTMoney
 - On Q1 of 2023, we focus on privacy & security with a functional prototype.

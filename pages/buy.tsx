@@ -9,11 +9,11 @@ import router from "next/router";
 
 const BuyPage: NextPage = () => {
   const price = 0.385086;
-  const [ftm, setFTM] = useState({})
+  const [ftm, setFTM] = useState("")
 
 
   const handleChange = (val: any) => {
-    setFTM(price*val)
+    setFTM(String(price*val));
   }
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
