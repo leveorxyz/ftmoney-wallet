@@ -1,6 +1,7 @@
 import { SetStateAction, useState } from 'react';
 import { Switch } from '@headlessui/react';
 import Datepicker from "react-tailwindcss-datepicker";
+import ethers, {utils} from 'ethers';
 
 
 function classNames(...classes: string[]) {
@@ -8,24 +9,67 @@ function classNames(...classes: string[]) {
 }
 
 export default function Example() {
+
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+  let address;
+  if (typeof window !== "undefined") {
+    address = localStorage.getItem("key");
+  }
+  
+
   const [agreed, setAgreed] = useState(false)
   const [fName, setFName] = useState("")
   const [lName, setLName] = useState("")
   const [email, setEmail] = useState("")
   const [company, setCompany] = useState("")
   const [value, setValue] = useState({})
+  const [overlay, setOverlay] = useState(false);
+
 
   const handleValueChange = (newValue: SetStateAction<{}>) => {
     console.log("newValue:", newValue);
     setValue(newValue);
   }
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-
+    setOverlay(true);
+    const kycHash = utils.hashMessage([fName, lName, email, company, value].join(","));
+    const rawResponse = await fetch(baseURL + "verifyKYC", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+            "userAddress": address,
+            "kycHash": kycHash
+         }),
+      });
+      const response = await rawResponse.json();
+      
+      if(response.txHash){
+          setOverlay(false);
+      }
+    
   }
 
-  return (
+  return overlay ? (
+    <div className="flex items-center justify-center min-h-screen">
+      <button
+        type="button"
+        className="bg-indigo-400 h-max w-max rounded-lg text-white font-bold hover:bg-indigo-300 hover:cursor-not-allowed duration-[500ms,800ms]"
+        disabled
+      >
+        <div className="flex items-center justify-center m-[10px]">
+          <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4" />
+          <div className="ml-2">
+            {" "}
+            Submitting KYC info... <div></div>
+          </div>
+        </div>
+      </button>
+    </div>
+  ) : (
     <div className="isolate bg-white py-24 px-6 sm:py-32 lg:px-8">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
         <svg
@@ -173,6 +217,7 @@ export default function Example() {
           <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={handleSubmit}
           >
             Submit
           </button>
