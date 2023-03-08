@@ -13,7 +13,7 @@ const Navbar = (props: Props) => {
         "w-full fixed z-10 px-4 shadow-sm h-16": true, //positioning & styling
       })}
     >
-      <div className="font-bold text-lg">My Logo</div>
+      <div className="font-bold text-lg">FTMoney</div>
       <div className="flex-grow"></div>
       <button className="md:hidden" onClick={props.onMenuButtonClick}>
         <Bars3Icon className="h-6 w-6" />
