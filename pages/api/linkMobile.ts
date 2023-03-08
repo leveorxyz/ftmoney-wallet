@@ -9,6 +9,7 @@ export default async function sendMessage(
   res: NextApiResponse
 ) {
   const privateKey = <string>process.env.PRIVATE_KEY;
+  const API_TOKEN = <string>process.env.API_TOKEN;
 
   const RPC = "";
   const contractABI = abi.abi;
@@ -17,7 +18,7 @@ export default async function sendMessage(
 
   const signer = new ethers.Wallet(
     privateKey,
-    new ethers.providers.JsonRpcProvider("https://ftm.getblock.io/f97f5289-26ef-4bda-9381-6428ff3eb811/testnet/")
+    new ethers.providers.JsonRpcProvider(`https://ftm.getblock.io/${API_TOKEN}/testnet/`)
   );
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
   console.log(salt, saltHint, userCell, userAddress);

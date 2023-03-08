@@ -6,6 +6,7 @@ import "@nomicfoundation/hardhat-toolbox";
 dotenv.config();
 
 const API_KEY = process.env.API_KEY;
+const API_TOKEN = process.env.API_TOKEN;
 
 const config: HardhatUserConfig = {
   solidity: '0.8.17',
@@ -23,7 +24,7 @@ const config: HardhatUserConfig = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     testnet: {
-      url: `https://rpc.testnet.fantom.network`,
+      url: `https://ftm.getblock.io/${API_TOKEN}/testnet/`,
       chainId: 4002,
       accounts: 
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
