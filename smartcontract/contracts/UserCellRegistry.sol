@@ -26,7 +26,7 @@ contract UserCellRegistry is Ownable {
 
     function getUserAddress(
         string calldata salt,
-        uint256 userCell
+        string calldata userCell
     ) public view returns (bool isRegistered, address key) {
         Record memory record = _records[
             keccak256(abi.encodePacked(salt, userCell))
