@@ -4,30 +4,27 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract KYCVerification is Ownable {
-
-
-    mapping (address => string) kycProofs;
-
+    mapping(address => string) kycProofs;
 
     function approveKYC(
-        bytes dataframe, uint8 v, bytes32 r, bytes32 s,
-        string kycHash
-    ) internal view  {
+        bytes memory dataframe,
+        uint8 v,
+        bytes32 r,
+        bytes32 s,
+        string memory kycHash,
+        address userAddress
+    ) external {
         // TODO: Verify from the cellRegistry contract whitelistaddress exist
-        address whitelistedAddress = sliceAddress(_signature.dataframe, 0);
-        bytes32 hash = keccak256(_signature.dataframe);
-        address recoverdSigner = ecrecover(
-            hash,
-            v,
-            r,
-            s
-        );
-        require(recoverdSigner == whitelistedAddress);
-        kycProofs[recoverdSigner] = kycHash;
+        address whitelistedAddress = sliceAddress(dataframe, 0);
+        bytes32 hash = keccak256(dataframe);
+        address recoverdSigner = ecrecover(hash, v, r, s);
+        require(recoverdSigner == owner());
+        require(userAddress == whitelistedAddress);
+        kycProofs[userAddress] = kycHash;
     }
 
     function sliceAddress(
-        bytes calldata b,
+        bytes memory b,
         uint256 offset
     ) private pure returns (address) {
         bytes32 out;

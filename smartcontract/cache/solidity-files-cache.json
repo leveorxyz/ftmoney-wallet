@@ -111,8 +111,8 @@
       ]
     },
     "/Users/tahliltahlil/Desktop/Leveor/FTMoney/fantomhackathon-wallet/smartcontract/contracts/KYCVerification.sol": {
-      "lastModificationDate": 1678281146861,
-      "contentHash": "6353407f7f4d33dd0c350ca888700800",
+      "lastModificationDate": 1678289229239,
+      "contentHash": "ede08827c9d4961e52acc60775fb8639",
       "sourceName": "contracts/KYCVerification.sol",
       "solcConfig": {
         "version": "0.8.17",
