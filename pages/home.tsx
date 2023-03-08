@@ -9,8 +9,8 @@ const HomePage: NextPage = () => {
   let removeBalance = 0;
 
   if (typeof window !== "undefined") {
-    addedBalance = Number(localStorage.balance);
-    removeBalance = Number(localStorage.sent);
+    addedBalance = Number(localStorage.balance || 0);
+    removeBalance = Number(localStorage.sent || 0);
   }
   const currentBalance = 100+addedBalance-removeBalance;
   return (
@@ -19,7 +19,7 @@ const HomePage: NextPage = () => {
         <div className="min-h-screen mt-16">
           <h1 className="text-gray-900  text-2xl text-center">Personal</h1>
           <p className="text-gray-900 text-md text-center">01521330801</p>
-          <h3 className="text-blue-900 text-center"> Balance: <span className="font-extrabold">{currentBalance}</span>  </h3>
+          <h3 className="text-blue-900 text-center"> Balance: <span className="font-extrabold">{currentBalance}</span> FTM </h3>
           <div className="flex gap-3 my-3">
             <button
               onClick={() => router.push("/buy")}
