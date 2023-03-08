@@ -5,33 +5,25 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract KYCVerification is Ownable {
 
-    struct Signature {
-        uint8 v;
-        bytes32 r;
-        bytes32 s;
-        bytes dataframe;
-    }
 
-    modifier onlyWhitelisted(Signature calldata signature) {
-        require(isKYCApproved(signature));
-        _;
-    }
+    mapping (address => string) kycProofs;
 
-    function isKYCApproved(
-        Signature calldata _signature
-    ) internal view returns (bool) {
+
+    function approveKYC(
+        bytes dataframe, uint8 v, bytes32 r, bytes32 s,
+        string kycHash
+    ) internal view  {
+        // TODO: Verify from the cellRegistry contract whitelistaddress exist
         address whitelistedAddress = sliceAddress(_signature.dataframe, 0);
         bytes32 hash = keccak256(_signature.dataframe);
         address recoverdSigner = ecrecover(
             hash,
-            _signature.v,
-            _signature.r,
-            _signature.s
+            v,
+            r,
+            s
         );
-
-        require(whitelistedAddress == msg.sender);
-        require(recoverdSigner == owner());
-        return true;
+        require(recoverdSigner == whitelistedAddress);
+        kycProofs[recoverdSigner] = kycHash;
     }
 
     function sliceAddress(

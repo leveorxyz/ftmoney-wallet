@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { ethers } from "ethers";
 import abi from "../../abis/UserCellRegistryABI.json";
 import contractDetails from "../../data.json";
+import Web3 from 'web3';
 
 
 export default async function sendMessage(
@@ -10,8 +11,8 @@ export default async function sendMessage(
 ) {
   const privateKey = <string>process.env.PRIVATE_KEY;
   const API_TOKEN = <string>process.env.API_TOKEN;
+  const web3 = new Web3();
 
-  const RPC = "";
   const contractABI = abi.abi;
   const contractAddress = contractDetails.cellRegistryAddress;
   const { salt, saltHint, userCell, userAddress } = req.body;
