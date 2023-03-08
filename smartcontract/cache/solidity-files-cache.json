@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/tahliltahlil/Desktop/Leveor/FTMoney/fantomhackathon-wallet/smartcontract/contracts/UserCellRegistry.sol": {
-      "lastModificationDate": 1678271569263,
-      "contentHash": "644c85249299c3bba01cb3bc0920b67d",
+      "lastModificationDate": 1678283248314,
+      "contentHash": "07274105d398b094618cbe7efccf510a",
       "sourceName": "contracts/UserCellRegistry.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -108,6 +108,43 @@
       ],
       "artifacts": [
         "Context"
+      ]
+    },
+    "/Users/tahliltahlil/Desktop/Leveor/FTMoney/fantomhackathon-wallet/smartcontract/contracts/KYCVerification.sol": {
+      "lastModificationDate": 1678281146861,
+      "contentHash": "6353407f7f4d33dd0c350ca888700800",
+      "sourceName": "contracts/KYCVerification.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "KYCVerification"
       ]
     }
   }

@@ -10,6 +10,13 @@ contract UserCellRegistry is Ownable {
         string saltHint;
     }
 
+    struct Signature {
+        uint8 v;
+        bytes32 r;
+        bytes32 s;
+        address userAddress;
+    }
+
     mapping(bytes32 => Record) _records;
     mapping(string => string) _saltHint;
     

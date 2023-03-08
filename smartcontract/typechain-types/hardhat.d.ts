@@ -17,6 +17,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
+      name: "KYCVerification",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.KYCVerification__factory>;
+    getContractFactory(
       name: "UserCellRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.UserCellRegistry__factory>;
@@ -26,6 +30,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
+    getContractAt(
+      name: "KYCVerification",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.KYCVerification>;
     getContractAt(
       name: "UserCellRegistry",
       address: string,

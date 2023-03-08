@@ -8,5 +8,7 @@ export type { contracts };
 export * as factories from "./factories";
 export type { Ownable } from "./@openzeppelin/contracts/access/Ownable";
 export { Ownable__factory } from "./factories/@openzeppelin/contracts/access/Ownable__factory";
+export type { KYCVerification } from "./contracts/KYCVerification";
+export { KYCVerification__factory } from "./factories/contracts/KYCVerification__factory";
 export type { UserCellRegistry } from "./contracts/UserCellRegistry";
 export { UserCellRegistry__factory } from "./factories/contracts/UserCellRegistry__factory";
