@@ -95,7 +95,7 @@ const SendPage: NextPage = () => {
                     </div>
 
                     <p className="mt-4 block text-sm font-medium leading-6 text-gray-900">
-                      Gas Amount (Estimated): 0.0000000 FTM
+                      Gas Amount (Estimated): 0.0000001 FTM
                     </p>
 
                     <div className="flex gap-3">

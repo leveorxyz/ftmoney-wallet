@@ -125,7 +125,7 @@ export default function Activity() {
               </div>
               <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                 <div>
-                  <p className="text-sm text-gray-500">20 GBP Total Fees</p>
+                  <p className="text-sm text-gray-500">0.02 GBP Total Fees</p>
                 </div>
               </div>
             </div>

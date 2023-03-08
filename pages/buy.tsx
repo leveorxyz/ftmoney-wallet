@@ -4,6 +4,7 @@ import Activity from "tauri/components/layouts/Activity";
 import Layout from "../components/layouts/Layout";
 
 const BuyPage: NextPage = () => {
+  const price = 0.385086;
   return (
     <Layout>
       <div className="container">
@@ -82,12 +83,14 @@ const BuyPage: NextPage = () => {
                           Cancel
                         </button>
                       </Link>
+                      <Link href='/home'>
                       <button
                         type="submit"
                         className="w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         Buy Now
                       </button>
+                      </Link>
                     </div>
                   </form>
                 </div>
