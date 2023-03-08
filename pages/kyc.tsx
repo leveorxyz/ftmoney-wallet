@@ -11,9 +11,9 @@ function classNames(...classes: string[]) {
 export default function Example() {
 
   const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
-  let address;
+  let address = "";
   if (typeof window !== "undefined") {
-    address = localStorage.getItem("key");
+    address = localStorage.getItem("key") as string;
   }
   
 
