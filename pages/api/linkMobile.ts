@@ -9,7 +9,7 @@ export default async function sendMessage(
   res: NextApiResponse
 ) {
   const privateKey = <string>process.env.PRIVATE_KEY;
-  console.log(privateKey);
+
   const RPC = "";
   const contractABI = abi.abi;
   const contractAddress = contractDetails.cellRegistryAddress;
@@ -17,14 +17,13 @@ export default async function sendMessage(
 
   const signer = new ethers.Wallet(
     privateKey,
-    new ethers.providers.JsonRpcProvider("https://rpc.testnet.fantom.network/")
+    new ethers.providers.JsonRpcProvider("https://ftm.getblock.io/f97f5289-26ef-4bda-9381-6428ff3eb811/testnet/")
   );
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
   console.log(salt, saltHint, userCell, userAddress);
   
   const tx = await contract.registerUser(salt, saltHint, userCell, userAddress);
-  console.log("done");
-   
+
   const txReceipt = await tx.wait();
   console.log(txReceipt);
 

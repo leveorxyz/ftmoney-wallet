@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createPrivateKeyPair } from "../utils";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowRightCircleIcon, LinkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const StartPage: NextPage = () => {
@@ -10,18 +10,41 @@ const StartPage: NextPage = () => {
     phone = localStorage.getItem("number") as string;
   }
   phone = "+8801521330801";
-
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
   const [saltset, setSalt] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [overlay, setOverlay] = useState(false);
+  const [txHash, setTxHash] = useState("");
+  const [keyPair, _] = useState(createPrivateKeyPair());
+  
 
   const handleSubmit = async () => {
     setOverlay(true);
+   console.log(baseURL);
+    const rawResponse = await fetch(baseURL + "linkMobile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        "salt": answer,
+        "saltHint": question,
+        "userCell": phone,
+        "userAddress": keyPair.address
+       }),
+    });
+    const response = await rawResponse.json();
+    
+    if(response.txHash){
+        setOverlay(false);
+        setTxHash(response.txHash);
+        setSalt(true);
+    }
+
   }
 
-  const keyPair = createPrivateKeyPair();
-  console.log(keyPair);
+
   const obscuredPrivateKey = "************" + keyPair.privateKey.slice(30);
   return overlay ? (
     <div className="flex items-center justify-center min-h-screen">
@@ -34,7 +57,7 @@ const StartPage: NextPage = () => {
           <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4" />
           <div className="ml-2">
             {" "}
-            Processing... <div></div>
+            Registering Address on Fantom Blockchain... <div></div>
           </div>
         </div>
       </button>
@@ -162,7 +185,7 @@ const StartPage: NextPage = () => {
             )}
 
             {saltset && (
-              <div className="text-center">
+              <div className="text-center mt-11">
                 <div className="flex items-center p-4 m-2 bg-white rounded-lg shadow-xs dark:bg-gray-500">
                   <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                     <svg
@@ -191,17 +214,27 @@ const StartPage: NextPage = () => {
         </figure>
       </div>
 
-      <div className="flex items-center justify-center mt-5">
         {saltset && (
-          <Link href="/password">
+        
+      <div className="flex items-center justify-center mt-5">
+        <div className="text-black p-5">
+          <Link href={"https://testnet.ftmscan.com/tx/"+txHash} target="_blank">
+          <h3> <LinkIcon className="h-6 w-6 inline"></LinkIcon> Explorer Link </h3>
+          </Link>
+        </div>
+        <div>
+        <Link href="/password">
             <button className="group rounded-2xl h-12 w-48 bg-green-500 font-bold text-lg text-white relative overflow-hidden">
               <span>Proceed </span>{" "}
               <ArrowRightCircleIcon className="h-6 w-6 inline" />
               <div className="absolute duration-300 inset-0 w-full h-full transition-all scale-0 group-hover:scale-100 group-hover:bg-white/30 rounded-2xl"></div>
             </button>
           </Link>
+        </div>
+         
+          </div>
         )}
-      </div>
+   
     </div>
   );
 };
