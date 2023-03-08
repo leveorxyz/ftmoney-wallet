@@ -12,8 +12,7 @@ const HomePage: NextPage = () => {
     addedBalance = Number(localStorage.balance);
     removeBalance = Number(localStorage.sent);
   }
-  const currentBalance = 100;
-  // +addedBalance-removeBalance;
+  const currentBalance = 100+addedBalance-removeBalance;
   return (
     <Layout>
       <div className="container pt-6 px-3">
