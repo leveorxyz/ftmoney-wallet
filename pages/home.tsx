@@ -5,14 +5,22 @@ import Layout from "../components/layouts/Layout";
 
 const HomePage: NextPage = () => {
   const router = useRouter();
+  let addedBalance = 0;
+  let removeBalance = 0;
 
+  if (typeof window !== "undefined") {
+    addedBalance = Number(localStorage.balance);
+    removeBalance = Number(localStorage.sent);
+  }
+  const currentBalance = 100;
+  // +addedBalance-removeBalance;
   return (
     <Layout>
       <div className="container pt-6 px-3">
         <div className="min-h-screen mt-16">
           <h1 className="text-gray-900  text-2xl text-center">Personal</h1>
-          <p className="text-gray-900 text-md text-center">01xxxxxxxxx</p>
-
+          <p className="text-gray-900 text-md text-center">01521330801</p>
+          <h3 className="text-blue-900 text-center"> Balance: <span className="font-extrabold">{currentBalance}</span>  </h3>
           <div className="flex gap-3 my-3">
             <button
               onClick={() => router.push("/buy")}

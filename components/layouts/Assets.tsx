@@ -11,10 +11,10 @@ export default function Assets() {
                 <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                   <div>
                     <p className="truncate text-sm font-medium text-indigo-600">
-                      36.777 FTM
+                      36.777 USDC
                     </p>
                     <p className="mt-2 flex items-center text-sm text-gray-500">
-                      <span className="truncate">$14.73 USD</span>
+                      <span className="truncate">$36.777 USD</span>
                     </p>
                   </div>
                 </div>
@@ -35,10 +35,10 @@ export default function Assets() {
                 <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                   <div>
                     <p className="truncate text-sm font-medium text-indigo-600">
-                      36.777 FTM
+                      36.777 USDT
                     </p>
                     <p className="mt-2 flex items-center text-sm text-gray-500">
-                      <span className="truncate">$14.73 USD</span>
+                      <span className="truncate">$36.777 USD</span>
                     </p>
                   </div>
                 </div>

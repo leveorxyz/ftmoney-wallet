@@ -2,6 +2,7 @@ import { SetStateAction, useState } from 'react';
 import { Switch } from '@headlessui/react';
 import Datepicker from "react-tailwindcss-datepicker";
 import ethers, {utils} from 'ethers';
+import router from 'next/router';
 
 
 function classNames(...classes: string[]) {
@@ -49,6 +50,8 @@ export default function Example() {
       
       if(response.txHash){
           setOverlay(false);
+          router.push("/home");
+
       }
     
   }

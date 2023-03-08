@@ -1,8 +1,18 @@
 import { NextPage } from "next";
 import Link from "next/link";
+import { useState } from "react";
 import Layout from "../components/layouts/Layout";
+import router from "next/router";
 
 const SendPage: NextPage = () => {
+  const [value, setValue] = useState({})
+
+  const handleSubmit = (e) => {
+    e.pr
+    localStorage.setItem('sent', value as string);
+    router.push('/home');
+  }
+
   return (
     <Layout>
       <div className="container">
@@ -31,7 +41,7 @@ const SendPage: NextPage = () => {
                           type="text"
                           autoComplete="firstName"
                           required
-                          className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -49,7 +59,7 @@ const SendPage: NextPage = () => {
                           type="tel"
                           autoComplete="phone"
                           required
-                          className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -63,7 +73,7 @@ const SendPage: NextPage = () => {
                       </label>
                       <select
                         name="asset"
-                        className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="mt-2 block w-full text-black rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         defaultValue="FTM"
                       >
                         <option value="ftm">FTM</option>
@@ -82,9 +92,10 @@ const SendPage: NextPage = () => {
                           type="number"
                           name="amount"
                           id="amount"
-                          className="block w-full rounded-md border-0 py-1.5 pl-1 pr-12  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full text-black rounded-md border-0 py-1.5 pl-1 pr-12  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="0.00"
                           aria-describedby="amount-currency"
+                          onChange={(e) => setValue(e.target.value)}
                         />
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                           <span className="sm:text-sm" id="amount-currency">
@@ -110,6 +121,7 @@ const SendPage: NextPage = () => {
                       <button
                         type="submit"
                         className="w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        onClick={handleSubmit}
                       >
                         Send
                       </button>
