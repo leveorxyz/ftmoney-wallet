@@ -5,3 +5,13 @@ build
 .DS_Store
 
 .next
+coverage
+coverage.json
+
+#Typechain
+typechain
+typechain-types
+
+#Solidity build files
+artifacts
+cache

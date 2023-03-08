@@ -5,7 +5,6 @@ import "@nomicfoundation/hardhat-toolbox";
 
 dotenv.config();
 
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const API_KEY = process.env.API_KEY;
 
 const config: HardhatUserConfig = {
@@ -20,12 +19,14 @@ const config: HardhatUserConfig = {
     mainnet: {
       url: `https://rpcapi.fantom.network`,
       chainId: 250,
-      accounts: [`0x${PRIVATE_KEY}`]
+      accounts: 
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     testnet: {
       url: `https://rpc.testnet.fantom.network`,
       chainId: 4002,
-      accounts: [`0x${PRIVATE_KEY}`]
+      accounts: 
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     coverage: {
       url: 'http://localhost:8555'

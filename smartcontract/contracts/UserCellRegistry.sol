@@ -43,4 +43,18 @@ contract UserCellRegistry is Ownable {
         record.initialized = true;
         _saltHint[userCell] = saltHint;
     }
+
+    function checkApproval(
+        Signature calldata _signature
+    ) internal view returns (bool) {
+        bytes32 hash = keccak256(abi.encodePacked(_signature.userAddress));
+        address recoverdSigner = ecrecover(
+            hash,
+            _signature.v,
+            _signature.r,
+            _signature.s
+        );
+        require(recoverdSigner == owner());
+        return true;
+    }
 }
