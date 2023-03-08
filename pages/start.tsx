@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React from "react";
+import React, {useState} from "react";
 import { createPrivateKeyPair } from '../utils';
 import {
   ArrowRightCircleIcon
@@ -7,9 +7,17 @@ import {
 import Link from 'next/link';
 
 const StartPage: NextPage = () => {
+  let phone= "+8801521330801";
+  if(typeof window !== 'undefined'){
+    phone = localStorage.getItem("number") as string;
+  }
+
+  const [salt, setSalt] = useState("")
+
 
   const keyPair = createPrivateKeyPair();
   console.log(keyPair)
+  const obscuredPrivateKey = "************" + keyPair.privateKey.slice(30);
   return (
     <div className="isolate overflow-hidden bg-white py-24 px-6 sm:py-32 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
@@ -58,7 +66,7 @@ const StartPage: NextPage = () => {
 
 
       
-        <span className="whitespace-nowrap inline-block group-hover:max-w-screen-2xl group-focus:max-w-screen-2xl max-w-0 scale-80 group-hover:scale-100 overflow-hidden transition-all duration-500 group-hover:px-2 group-focus:px-2">*********************</span>
+        <span className="whitespace-nowrap inline-block group-hover:max-w-screen-2xl group-focus:max-w-screen-2xl max-w-0 scale-80 group-hover:scale-100 overflow-hidden transition-all duration-500 group-hover:px-2 group-focus:px-2">{obscuredPrivateKey}</span>
       </span>
       
 
